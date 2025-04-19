@@ -1,0 +1,2 @@
+<!-- @format html -->
+<?php $page = basename($_SERVER['PHP_SELF'], ".php"); ?> //esta línea de código toma la ruta completa del script PHP que se está ejecutando, extrae solo el nombre del archivo y luego le remueve la extensión ".php".

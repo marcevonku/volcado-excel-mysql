@@ -1,0 +1,9 @@
+# Archivos de configuración sensibles
+
+/config.php
+/database.php
+.env
+*.key
+notas.txt
+READMEtxt.txt
+# Archivos de configuración de IDEs
