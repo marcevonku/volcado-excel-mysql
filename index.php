@@ -1,89 +1,29 @@
 <?php
-/* ***************************** */
-/* ****** Rutinas Comunes ****** */
-/* ***************************** */
 
+?>
+<!DOCTYPE html>
+<html lang="en">
 
-include("include/funciones.php");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8b+z4+2j7xk5l5e5z5e5z5e5z5e5z5e5z5e" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8b+z4+2j7xk5l5e5z5e5z5e5z5e5z5e5z5e" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8b+z4+2j7xk5l5e5z5e5z5e5z5e5z5e5z5e" crossorigin="anonymous" />
+</head>
 
-
-/* ******************************************* */
-/* ****** Arma las opciones del Men ****** */
-/* ******************************************* */
-function Armar()
-{
-
-    global $tabla, $usuario, $rol_id, $mysql_link;
-
-    $i = 0;
-    $rol_id = $_SESSION['rol_id'];
-    $sql = "select pri_programa, pri_desc from privilegios as a, priv_rol as b where a.pri_id = b.pri_id and b.rol_id= $rol_id and b.valor=1 order by a.pri_id";
-    $Result = mysqli_query($mysql_link, $sql);
-    while ($row = mysqli_fetch_row($Result)) {
-        $tabla[$i]["href"] = $row[0];
-        $tabla[$i]["text"] = $row[1];
-        $i++;
-    }
-    mysqli_free_result($Result);
-}
-
-/* ******************************************* */
-/* ****** Muestra las opciones del Men ****** */
-/* ******************************************* */
-function Mostrar()
-{
-
-    global $mensajes, $confirmar, $tabla, $usuario, $rol_id;
-
-
-    $Titulo = "Men&uacute; Principal";
-    include "include/arriba.inc";
-
-    echo "    <br>\n";
-    echo "    <br>\n";
-    echo "    <center><table width='40%' class='menu'>\n";
-    for ($i = 0; $i < count($tabla); $i++) {
-        echo "        <tr>\n";
-        echo "            <td width='50%' class='menu'>\n";
-        echo                 "<img src='images/menu.jpg' valign='middle' border=0><a href='" . $tabla[$i]["href"] . "'>\n";
-        echo                      $tabla[$i]["text"] . "\n";
-        echo "                </a>\n";
-        echo "            </td>\n";
-        echo "        </tr>\n";
-    }
-    echo "    </table></center>\n";
-    echo "    <br>\n";
-    if ($mensajes) {
-        Mostrar_Error($mensajes);
-    }
-
-    echo "</body>\n";
-    echo "</html>\n";
-    return true;
-}
-
-/* *********************** */
-/* ******  M a i n  ****** */
-/* *********************** */
-
-$mensajes = "";
-
-//echo $_SESSION['usuario'];
-$usuario = $_SESSION['usuario'];
-$password = $_SESSION['password'];
-
-
-
-if (!Conectar()) {
-    echo $mensaje;
-    exit;
-}
-$_SESSION['usuario'] = $usuario;
-$_SESSION['password'] = $password;
-if (!Seguridad()) {
-    header("Location:index.php");
-    exit;
-}
-
-Armar();
-Mostrar();
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>My Website</h1>
+        </div>
+        <div class="content">
+            <p>This is the content of my website.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2023 My Website</p>
+        </div>
+    </div>
+</body>
